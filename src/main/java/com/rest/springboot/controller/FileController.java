@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +25,7 @@ public class FileController {
 	}
 
 	@GetMapping("/{id}")
-	public FileDetail getFile(Long id) {
+	public FileDetail getFile(@PathVariable("id") Long id) {
 		System.out.println(id);
 		return fileService.getFile(id);
 	}
@@ -35,12 +36,12 @@ public class FileController {
 	}
 
 	@PostMapping("/{id}")
-	public FileDetail updateFileDetails(Long id, @RequestBody FileDetail fileDetail) throws Exception {
+	public FileDetail updateFileDetails(@PathVariable("id") Long id, @RequestBody FileDetail fileDetail) throws Exception {
 		return fileService.updateFileDetails(id, fileDetail);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteFileDetail(Long id) {
+	public void deleteFileDetail(@PathVariable("id") Long id) {
 		fileService.deleteFileDetail(id);
 	}
 
