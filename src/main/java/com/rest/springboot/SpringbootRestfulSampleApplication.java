@@ -9,5 +9,4 @@ public class SpringbootRestfulSampleApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootRestfulSampleApplication.class, args);
 	}
-
 }
