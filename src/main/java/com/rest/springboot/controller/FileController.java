@@ -13,34 +13,34 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rest.springboot.model.FileDetail;
 import com.rest.springboot.service.FileService;
 
-@RestController("/files")
+@RestController
 public class FileController {
 
 	@Autowired
 	private FileService fileService;
 
-	@GetMapping
+	@GetMapping("/files")
 	public List<FileDetail> getAllFiles() {
 		return fileService.getAllFiles();
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/files/{id}")
 	public FileDetail getFile(@PathVariable("id") Long id) {
 		System.out.println(id);
 		return fileService.getFile(id);
 	}
 
-	@PostMapping
+	@PostMapping("/files")
 	public FileDetail saveFileDetails(@RequestBody FileDetail fileDetail) {
 		return fileService.saveFileDetails(fileDetail);
 	}
 
-	@PostMapping("/{id}")
+	@PostMapping("/files/{id}")
 	public FileDetail updateFileDetails(@PathVariable("id") Long id, @RequestBody FileDetail fileDetail) throws Exception {
 		return fileService.updateFileDetails(id, fileDetail);
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/files/{id}")
 	public void deleteFileDetail(@PathVariable("id") Long id) {
 		fileService.deleteFileDetail(id);
 	}
