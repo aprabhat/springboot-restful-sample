@@ -17,5 +17,12 @@ spec:
       containers:
       - name: springboot-restful-sample
         image: aprabhat/springboot-restful-sample:v1.0
+        resources:
+          limits:
+            cpu: 1
+            memory: 512Mi
+          requests:
+            cpu: 0.5
+            memory: 256Mi
         ports:
         - containerPort: 8080
