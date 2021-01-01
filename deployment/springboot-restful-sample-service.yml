@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: springboot-restful-sample-service
 spec:
+  type: LoadBalancer
   selector:
     app: springboot-restful-sample
   ports:
