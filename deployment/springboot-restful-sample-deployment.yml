@@ -1,3 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-restful-sample-service
+spec:
+  selector:
+    app: springboot-restful-sample
+  ports:
+  - protocol: TCP
+    port: 8080
+    nodePort: 30001
+  type: NodePort
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -5,7 +19,7 @@ metadata:
   labels:
     app: springboot-restful-sample
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: springboot-restful-sample
