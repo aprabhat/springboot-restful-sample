@@ -8,7 +8,6 @@ spec:
   ports:
   - protocol: TCP
     port: 8080
-    nodePort: 30001
   type: NodePort
 ---
 
@@ -19,7 +18,7 @@ metadata:
   labels:
     app: springboot-restful-sample
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: springboot-restful-sample
@@ -40,3 +39,4 @@ spec:
             memory: 256Mi
         ports:
         - containerPort: 8080
+        imagePullPolicy: Always
