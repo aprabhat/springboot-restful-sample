@@ -18,7 +18,7 @@ metadata:
   labels:
     app: springboot-restful-sample
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: springboot-restful-sample
