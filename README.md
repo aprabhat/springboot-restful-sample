@@ -23,7 +23,7 @@ Steps to follow
 
 2. Open a termical in the project working directory and run
 
-kubectl apply -f deployment
+```kubectl apply -f deployment```
 
 This will create a deployment and service object in kubernetes. You can modify the configuration related to replicas, memory and cpu in [springboot-restful-sample-deployment.yml](deployment/springboot-restful-sample-deployment.yml) file.
 
