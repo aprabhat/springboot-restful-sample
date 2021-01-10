@@ -16,36 +16,36 @@ import com.rest.springboot.model.EmployeeDetails;
 import com.rest.springboot.service.EmployeeService;
 
 @RestController
-@RequestMapping("/files")
+@RequestMapping("/employees")
 public class EmployeeController {
 
 	@Autowired
-	private EmployeeService fileService;
+	private EmployeeService employeeService;
 
 	@GetMapping
-	public List<EmployeeDetails> getAllFiles() {
-		return fileService.getAllEmployees();
+	public List<EmployeeDetails> getAllEmployees() {
+		return employeeService.getAllEmployees();
 	}
 
 	@GetMapping("/{id}")
-	public EmployeeDetails getFile(@PathVariable("id") Long id) {
+	public EmployeeDetails getEmployee(@PathVariable("id") Long id) {
 		System.out.println(id);
-		return fileService.getEmployee(id);
+		return employeeService.getEmployee(id);
 	}
 
 	@PostMapping
-	public EmployeeDetails saveFileDetails(@RequestBody EmployeeDetails employeeDetail) {
-		return fileService.saveEmployeeDetails(employeeDetail);
+	public EmployeeDetails saveEmployeeDetails(@RequestBody EmployeeDetails employeeDetail) {
+		return employeeService.saveEmployeeDetails(employeeDetail);
 	}
 
 	@PutMapping("/{id}")
-	public EmployeeDetails updateFileDetails(@PathVariable("id") Long id, @RequestBody EmployeeDetails employeeDetail) throws Exception {
-		return fileService.updateEmployeeDetails(id, employeeDetail);
+	public EmployeeDetails updateEmployeeDetails(@PathVariable("id") Long id, @RequestBody EmployeeDetails employeeDetail) throws Exception {
+		return employeeService.updateEmployeeDetails(id, employeeDetail);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteFileDetail(@PathVariable("id") Long id) {
-		fileService.deleteEmployeeDetails(id);
+	public void deleteEmployeeDetail(@PathVariable("id") Long id) {
+		employeeService.deleteEmployeeDetails(id);
 	}
 
 }
