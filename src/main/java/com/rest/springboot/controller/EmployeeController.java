@@ -16,7 +16,7 @@ import com.rest.springboot.service.FileService;
 
 @RestController
 @RequestMapping("/files")
-public class FileController {
+public class EmployeeController {
 
 	@Autowired
 	private FileService fileService;
