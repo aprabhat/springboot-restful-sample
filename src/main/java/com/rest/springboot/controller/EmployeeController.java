@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rest.springboot.model.EmployeeDetails;
-import com.rest.springboot.model.FileDetail;
 import com.rest.springboot.service.EmployeeService;
 
 @RestController
@@ -25,13 +24,13 @@ public class EmployeeController {
 
 	@GetMapping
 	public List<EmployeeDetails> getAllFiles() {
-		return fileService.getAllFiles();
+		return fileService.getAllEmployees();
 	}
 
 	@GetMapping("/{id}")
 	public EmployeeDetails getFile(@PathVariable("id") Long id) {
 		System.out.println(id);
-		return fileService.getFile(id);
+		return fileService.getEmployee(id);
 	}
 
 	@PostMapping
@@ -46,7 +45,7 @@ public class EmployeeController {
 
 	@DeleteMapping("/{id}")
 	public void deleteFileDetail(@PathVariable("id") Long id) {
-		fileService.deleteFileDetail(id);
+		fileService.deleteEmployeeDetails(id);
 	}
 
 }
