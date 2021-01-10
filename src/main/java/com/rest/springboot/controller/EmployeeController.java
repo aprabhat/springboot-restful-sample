@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rest.springboot.model.EmployeeDetails;
 import com.rest.springboot.model.FileDetail;
 import com.rest.springboot.service.EmployeeService;
 
@@ -22,24 +24,24 @@ public class EmployeeController {
 	private EmployeeService fileService;
 
 	@GetMapping
-	public List<FileDetail> getAllFiles() {
+	public List<EmployeeDetails> getAllFiles() {
 		return fileService.getAllFiles();
 	}
 
 	@GetMapping("/{id}")
-	public FileDetail getFile(@PathVariable("id") Long id) {
+	public EmployeeDetails getFile(@PathVariable("id") Long id) {
 		System.out.println(id);
 		return fileService.getFile(id);
 	}
 
 	@PostMapping
-	public FileDetail saveFileDetails(@RequestBody FileDetail fileDetail) {
-		return fileService.saveFileDetails(fileDetail);
+	public EmployeeDetails saveFileDetails(@RequestBody EmployeeDetails employeeDetail) {
+		return fileService.saveEmployeeDetails(employeeDetail);
 	}
 
-	@PostMapping("/{id}")
-	public FileDetail updateFileDetails(@PathVariable("id") Long id, @RequestBody FileDetail fileDetail) throws Exception {
-		return fileService.updateFileDetails(id, fileDetail);
+	@PutMapping("/{id}")
+	public EmployeeDetails updateFileDetails(@PathVariable("id") Long id, @RequestBody EmployeeDetails employeeDetail) throws Exception {
+		return fileService.updateEmployeeDetails(id, employeeDetail);
 	}
 
 	@DeleteMapping("/{id}")
