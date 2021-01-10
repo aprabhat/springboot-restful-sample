@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rest.springboot.model.FileDetail;
-import com.rest.springboot.service.FileService;
+import com.rest.springboot.service.EmployeeService;
 
 @RestController
 @RequestMapping("/files")
 public class EmployeeController {
 
 	@Autowired
-	private FileService fileService;
+	private EmployeeService fileService;
 
 	@GetMapping
 	public List<FileDetail> getAllFiles() {

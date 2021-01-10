@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 
 import com.rest.springboot.entity.FileEntity;
 import com.rest.springboot.model.FileDetail;
-import com.rest.springboot.repository.FileRepository;
+import com.rest.springboot.repository.EmployeeRepository;
 
 @Service
-public class FileService {
+public class EmployeeService {
 	@Autowired
-	private FileRepository fileRepository;
+	private EmployeeRepository fileRepository;
 	private ModelMapper mapper = new ModelMapper();
 
 	public List<FileDetail> getAllFiles() {

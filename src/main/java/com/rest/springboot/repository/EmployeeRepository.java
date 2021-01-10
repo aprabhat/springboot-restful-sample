@@ -8,5 +8,5 @@ import com.rest.springboot.entity.FileEntity;
 
 
 @Repository
-public interface FileRepository extends CrudRepository<FileEntity, Long> {
+public interface EmployeeRepository extends CrudRepository<FileEntity, Long> {
 }
