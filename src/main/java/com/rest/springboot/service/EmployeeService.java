@@ -19,7 +19,7 @@ public class EmployeeService {
 	private EmployeeRepository fileRepository;
 	private ModelMapper mapper = new ModelMapper();
 
-	public List<EmployeeDetails> getAllFiles() {
+	public List<EmployeeDetails> getAllEmployees() {
 		Iterable<Employee> fileEntities = fileRepository.findAll();
 		Type type = new TypeToken<List<EmployeeDetails>>() {
 		}.getType();
@@ -27,7 +27,7 @@ public class EmployeeService {
 		return EmployeeDetailss;
 	}
 
-	public EmployeeDetails getFile(Long id) {
+	public EmployeeDetails getEmployee(Long id) {
 		Optional<Employee> EmployeeEntity = fileRepository.findById(id);
 		if (EmployeeEntity.isPresent()) {
 			return mapper.map(EmployeeEntity.get(), EmployeeDetails.class);
@@ -35,7 +35,7 @@ public class EmployeeService {
 		return null;
 	}
 
-	public EmployeeDetails saveEmployeeDetailss(EmployeeDetails EmployeeDetails) {
+	public EmployeeDetails saveEmployeeDetails(EmployeeDetails EmployeeDetails) {
 		Employee employee = mapper.map(EmployeeDetails, Employee.class);
 		System.out.println(employee.getId());
 		Employee savedEmployee = fileRepository.save(employee);
@@ -43,7 +43,7 @@ public class EmployeeService {
 		return EmployeeDetails;
 	}
 
-	public EmployeeDetails updateEmployeeDetailss(Long id, EmployeeDetails EmployeeDetails) throws Exception {
+	public EmployeeDetails updateEmployeeDetails(Long id, EmployeeDetails EmployeeDetails) throws Exception {
 		boolean isExist = fileRepository.existsById(id);
 		if (isExist) {
 			EmployeeDetails.setId(id);
