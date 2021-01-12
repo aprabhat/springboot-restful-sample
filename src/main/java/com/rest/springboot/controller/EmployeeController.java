@@ -45,9 +45,12 @@ public class EmployeeController {
 	}
 
 	@PutMapping("/{id}")
-	public EmployeeDetails updateEmployeeDetails(@PathVariable("id") Long id,
+	public ResponseEntity<EmployeeDetails> updateEmployeeDetails(@PathVariable("id") Long id,
 			@RequestBody EmployeeDetails employeeDetail) throws Exception {
-		return employeeService.updateEmployeeDetails(id, employeeDetail);
+		if (employeeService.isExist(id)) {
+			return new ResponseEntity<>(employeeService.updateEmployeeDetails(id, employeeDetail), HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	@DeleteMapping("/{id}")
