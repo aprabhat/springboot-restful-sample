@@ -37,27 +37,25 @@ public class EmployeeService {
 
 	public EmployeeDetails saveEmployeeDetails(EmployeeDetails EmployeeDetails) {
 		Employee employee = mapper.map(EmployeeDetails, Employee.class);
-		System.out.println(employee.getId());
 		Employee savedEmployee = employeeRepository.save(employee);
 		EmployeeDetails.setId(savedEmployee.getId());
 		return EmployeeDetails;
 	}
 
 	public EmployeeDetails updateEmployeeDetails(Long id, EmployeeDetails EmployeeDetails) throws Exception {
-		boolean isExist = employeeRepository.existsById(id);
-		if (isExist) {
 			EmployeeDetails.setId(id);
 			Employee employee = mapper.map(EmployeeDetails, Employee.class);
 			employee = employeeRepository.save(employee);
 			return mapper.map(employee, EmployeeDetails.class);
-		}
-		throw new Exception("Employee not exist with id " + id);
 	}
 
 	public void deleteEmployeeDetails(Long id) {
-		boolean isExist = employeeRepository.existsById(id);
-		if (isExist) {
+		if (isExist(id)) {
 			employeeRepository.deleteById(id);
 		}
+	}
+
+	public boolean isExist(Long id) {
+		return employeeRepository.existsById(id);
 	}
 }
