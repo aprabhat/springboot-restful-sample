@@ -31,9 +31,8 @@ public class EmployeeController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<EmployeeDetails> getEmployee(@PathVariable("id") Long id) {
-		System.out.println(id);
-		EmployeeDetails employee = employeeService.getEmployee(id);
-		if (employee != null) {
+		if (employeeService.isExist(id)) {
+			EmployeeDetails employee = employeeService.getEmployee(id);
 			return new ResponseEntity<EmployeeDetails>(employee, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -52,8 +51,12 @@ public class EmployeeController {
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteEmployeeDetail(@PathVariable("id") Long id) {
-		employeeService.deleteEmployeeDetails(id);
+	public ResponseEntity<Void> deleteEmployeeDetail(@PathVariable("id") Long id) {
+		if (employeeService.isExist(id)) {
+			employeeService.deleteEmployeeDetails(id);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		}
+		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 	}
 
 }
