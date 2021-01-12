@@ -3,6 +3,8 @@ package com.rest.springboot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,9 +30,14 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/{id}")
-	public EmployeeDetails getEmployee(@PathVariable("id") Long id) {
+	public ResponseEntity<EmployeeDetails> getEmployee(@PathVariable("id") Long id) {
 		System.out.println(id);
-		return employeeService.getEmployee(id);
+		EmployeeDetails employee = employeeService.getEmployee(id);
+		if (employee != null) {
+			return new ResponseEntity<EmployeeDetails>(employee, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@PostMapping
@@ -39,7 +46,8 @@ public class EmployeeController {
 	}
 
 	@PutMapping("/{id}")
-	public EmployeeDetails updateEmployeeDetails(@PathVariable("id") Long id, @RequestBody EmployeeDetails employeeDetail) throws Exception {
+	public EmployeeDetails updateEmployeeDetails(@PathVariable("id") Long id,
+			@RequestBody EmployeeDetails employeeDetail) throws Exception {
 		return employeeService.updateEmployeeDetails(id, employeeDetail);
 	}
 
